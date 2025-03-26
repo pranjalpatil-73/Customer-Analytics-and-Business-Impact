@@ -34,7 +34,7 @@ Impact: Loss of revenue from loyal customers and increased acquisition costs.
 
 **Impact:** Lower sales and missed opportunities to capitalize on popular products.
 
-3. Strategies Implemented
+**3. Strategies Implemented**
 3.1 Customer Segmentation
 Objective
 Segment customers into groups (e.g., high-value, medium-value, low-value) to design targeted marketing campaigns.
@@ -50,6 +50,7 @@ Low-Value: Bottom 20% of customers by spend.
 
 Code
 # Segment customers based on TotalSpend
+
 customer_data['Segment'] = pd.cut(
     customer_data['TotalSpend'],
     bins=[-1, 100, 500, float('inf')],
@@ -61,6 +62,7 @@ High-Value Customers: Targeted with exclusive offers and premium services to inc
 Medium-Value Customers: Encouraged to spend more through upselling and cross-selling.
 
 Low-Value Customers: Attracted with discounts and incentives to make their first purchase.
+
 3.2 Customer Lifetime Value (CLV) Calculation
 Objective
 Calculate the Customer Lifetime Value (CLV) to identify the most valuable customers and optimize marketing spend.
@@ -83,6 +85,7 @@ Customer Lifespan: Difference between the first and last purchase dates.
 
 Code
 # Calculate CLV
+
 avg_purchase_value = customer_data['TotalSpend'] / customer_data['NumTransactions']
 purchase_frequency = customer_data['NumTransactions'] / customer_data['CustomerLifetime']
 customer_lifespan = customer_data['CustomerLifetime']
@@ -104,6 +107,7 @@ Metrics: Compare conversion rates, click-through rates, and revenue between grou
 
 Code
 # Simulate A/B test data
+
 np.random.seed(42)
 customer_data['TestGroup'] = np.random.choice(['A', 'B'], size=len(customer_data))
 
@@ -126,6 +130,7 @@ Others: Standard pricing.
 Code
 
 # Define dynamic pricing rules
+
 customer_data['DynamicPrice'] = np.where(
     customer_data['HighValue'] == 1,
     customer_data['TotalSpend'] * 0.9,  # 10% discount for high-value customers
